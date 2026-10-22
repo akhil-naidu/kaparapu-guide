@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>02 Write a clean request before you send it · Working with AI: an organisation playbook</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif']},
+colors:{background:'hsl(var(--background))',foreground:'hsl(var(--foreground))',muted:{DEFAULT:'hsl(var(--muted))',foreground:'hsl(var(--muted-foreground))'},
+border:'hsl(var(--border))',card:{DEFAULT:'hsl(var(--card))',foreground:'hsl(var(--card-foreground))'},primary:{DEFAULT:'hsl(var(--primary))',foreground:'hsl(var(--primary-foreground))'},
+accent:{DEFAULT:'hsl(var(--accent))',foreground:'hsl(var(--accent-foreground))'},destructive:'hsl(var(--destructive))'},
+borderRadius:{lg:'var(--radius)',md:'calc(var(--radius) - 2px)',sm:'calc(var(--radius) - 4px)'}}}};
+if(localStorage.theme==='dark'||(!localStorage.theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');
+</script>
+<link rel="preconnect" href="https://rsms.me/"><link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body class="bg-background text-foreground font-sans antialiased">
+<header class="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
+ <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+  <a href="index.html" class="font-semibold tracking-tight">Working with AI <span class="text-muted-foreground font-normal">· organisation playbook</span></a>
+  <nav class="flex items-center gap-1 text-sm">
+   <a class="tab" href="index.html">Overview</a><a class="tab" href="01-roles-and-anti-jobs.html">Chapters</a><a class="tab" href="changelog.html">Changelog</a>
+   <button id="theme" class="tab" aria-label="Toggle dark mode" onclick="document.documentElement.classList.toggle('dark');localStorage.theme=document.documentElement.classList.contains('dark')?'dark':'light'">◐</button>
+  </nav>
+ </div>
+</header>
+<div class="mx-auto flex max-w-6xl gap-10 px-4 py-10"><aside class="hidden lg:block w-64 shrink-0"><nav class="sticky top-20" aria-label="Chapters"><p class="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Chapters</p><ol class="space-y-1"><li><a class="side" href="01-roles-and-anti-jobs.html"><span class="num">01</span>One bot, one job</a></li><li><a class="side active" href="02-clean-requests.html"><span class="num">02</span>Write a clean request before you send it</a></li><li><a class="side" href="03-approvals-and-handoffs.html"><span class="num">03</span>Approvals travel with the work</a></li><li><a class="side" href="04-research-before-proposing.html"><span class="num">04</span>Research before you propose</a></li><li><a class="side" href="05-spikes-prds-epics.html"><span class="num">05</span>Spikes, PRDs and epics</a></li><li><a class="side" href="06-tracker-hygiene.html"><span class="num">06</span>A clean tracker and neutral text</a></li><li><a class="side" href="07-tools-tokens-verification.html"><span class="num">07</span>Tools, tokens and verification</a></li><li><a class="side" href="08-communication.html"><span class="num">08</span>Concise messages, at the right time</a></li><li><a class="side" href="09-shared-memory.html"><span class="num">09</span>Shared memory and living docs</a></li><li><a class="side" href="10-execution-loop.html"><span class="num">10</span>The phase-by-phase execution loop</a></li><li><a class="side" href="11-running-example.html"><span class="num">11</span>Worked example: kube-poc end to end</a></li><li><a class="side" href="12-working-style.html"><span class="num">12</span>The owner&#x27;s working style</a></li></ol></nav></aside>
+<main class="min-w-0 flex-1"><p class="text-sm text-muted-foreground">Chapter 02 of 12</p>
+<h1 class="mt-1 text-3xl font-bold tracking-tight">Write a clean request before you send it</h1><p class="mt-3 text-lg text-muted-foreground">Dictate or type the ask, run it through a polish and a prompt-engineer pass, read it back, then send.</p>
+<div class="card mt-8 border-l-4 border-l-primary"><span class="badge">Principle</span><div class="prose-body mt-2"><p>Every request to a bot or any AI is cleaned before it is sent. The owner's practice (in his words, 2026-10-22): dictate with <b>Wispr Flow</b>, or type when he needs to think; when done, run Wispr Flow's transformers <b>Option+1 (Polish)</b> and <b>Option+2 (Prompt engineer)</b>. Reading the polished or prompt-engineered version also confirms his own understanding of the ask and lets him check it's what he actually wants.</p></div></div>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Why it matters</h2><div class="prose-body mt-3"><ul><li><b>It is a verification loop.</b> The rewrite is a second reading of your own intent. If the cleaned text says something you did not mean, you caught a misunderstanding before any bot acted on it.</li><li><b>Fewer correction rounds.</b> A vague ask produces a plausible but wrong answer, then a correction, then a redo. A clean ask removes most of those loops. <span class="badge-muted">Inferred</span> the effect is largest on long research or ticket requests.</li><li><b>Better downstream text.</b> Bots often quote the owner's words in handoffs (chapter 03). Clean words make clean approvals.</li></ul></div></section>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Worked examples</h2><div class="prose-body mt-3"><div class="grid gap-4"><div class="card"><div class="flex items-center gap-2"><span class="badge">Example</span><h3 class="font-medium">The steps</h3></div><div class="prose-body mt-2"><ol><li>Dictate the request in Wispr Flow, or type it when you need to think it through.</li><li>Select it and press <b>Option+1</b> (Polish) for grammar and clarity.</li><li>For anything non-trivial, press <b>Option+2</b> (Prompt engineer) to structure it: goal, context, constraints, expected output.</li><li>Read the result. Ask: is this what I actually want? Fix anything that drifted.</li><li>Send.</li></ol></div></div><div class="card"><div class="flex items-center gap-2"><span class="badge">Example</span><h3 class="font-medium">Before and after &lt;span class=&quot;badge-muted&quot;&gt;Illustrative&lt;/span&gt;</h3></div><div class="prose-body mt-2"><p>This pair is written for the guide; it is not a recorded message.</p><p><b>Raw dictation:</b></p><pre class="tpl">ok so the api info thing shows wrong version i think and the builder too, we had open spec for this right so why, if its a bug put it in the old ticket</pre><p><b>After Polish + Prompt engineer:</b></p><pre class="tpl">Check https://k8s.dflow.sh/api/v1/info. The version and the default builder image look wrong.
+1. Confirm whether each value is wrong, and why.
+2. Explain why our OpenAPI/OpenSpec contract did not catch it.
+3. If it is a bug, add it to the existing version-mismatch bug ticket (don't create a new one).</pre><p>Reading the second version, the owner can see he is asking for three things, including a root-cause question he only implied.</p></div></div></div></div></section>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Templates</h2><div class="prose-body mt-3"><div class="mt-4"><p class="text-sm font-medium">Self-check before sending</p><pre class="tpl">Before I send:
+[ ] Goal in one sentence?
+[ ] Context the bot can&#x27;t know (product, environment, constraints)?
+[ ] Exactly which action I approve (create / update / draft only)?
+[ ] What I want back (link, list, decision, draft)?
+[ ] Does the cleaned version say what I actually mean?</pre></div></div></section>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Pitfalls</h2><div class="prose-body mt-3"><ul><li>Sending the prompt-engineered text without reading it. The read-back is the point.</li><li>Letting the rewrite add scope you didn't ask for (extra deliverables, invented constraints). Delete them.</li><li>Over-engineering one-line asks. Polish alone is enough for "link to the ticket".</li></ul></div></section>
+<nav class="mt-12 grid gap-4 sm:grid-cols-2" aria-label="Previous and next"><a class="card hover:bg-muted" href="01-roles-and-anti-jobs.html"><span class="text-xs text-muted-foreground">← Previous</span><div class="font-medium">One bot, one job</div></a><a class="card hover:bg-muted text-right" href="03-approvals-and-handoffs.html"><span class="text-xs text-muted-foreground">Next →</span><div class="font-medium">Approvals travel with the work</div></a></nav></main></div><footer class="border-t border-border mt-16"><div class="mx-auto max-w-6xl px-4 py-6 text-sm text-muted-foreground">Private living document. Last built from <code>_src/chapters.py</code>. See <a class="underline" href="changelog.html">changelog</a>.</div></footer>
+<script>
+document.querySelectorAll('pre.tpl').forEach(p=>{const b=document.createElement('button');b.textContent='Copy';b.className='copy';b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace(/^Copy\n?/,''));b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1200)};p.prepend(b)});
+</script>
+</body></html>

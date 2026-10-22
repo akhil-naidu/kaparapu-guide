@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>03 Approvals travel with the work · Working with AI: an organisation playbook</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif']},
+colors:{background:'hsl(var(--background))',foreground:'hsl(var(--foreground))',muted:{DEFAULT:'hsl(var(--muted))',foreground:'hsl(var(--muted-foreground))'},
+border:'hsl(var(--border))',card:{DEFAULT:'hsl(var(--card))',foreground:'hsl(var(--card-foreground))'},primary:{DEFAULT:'hsl(var(--primary))',foreground:'hsl(var(--primary-foreground))'},
+accent:{DEFAULT:'hsl(var(--accent))',foreground:'hsl(var(--accent-foreground))'},destructive:'hsl(var(--destructive))'},
+borderRadius:{lg:'var(--radius)',md:'calc(var(--radius) - 2px)',sm:'calc(var(--radius) - 4px)'}}}};
+if(localStorage.theme==='dark'||(!localStorage.theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');
+</script>
+<link rel="preconnect" href="https://rsms.me/"><link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body class="bg-background text-foreground font-sans antialiased">
+<header class="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
+ <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+  <a href="index.html" class="font-semibold tracking-tight">Working with AI <span class="text-muted-foreground font-normal">· organisation playbook</span></a>
+  <nav class="flex items-center gap-1 text-sm">
+   <a class="tab" href="index.html">Overview</a><a class="tab" href="01-roles-and-anti-jobs.html">Chapters</a><a class="tab" href="changelog.html">Changelog</a>
+   <button id="theme" class="tab" aria-label="Toggle dark mode" onclick="document.documentElement.classList.toggle('dark');localStorage.theme=document.documentElement.classList.contains('dark')?'dark':'light'">◐</button>
+  </nav>
+ </div>
+</header>
+<div class="mx-auto flex max-w-6xl gap-10 px-4 py-10"><aside class="hidden lg:block w-64 shrink-0"><nav class="sticky top-20" aria-label="Chapters"><p class="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Chapters</p><ol class="space-y-1"><li><a class="side" href="01-roles-and-anti-jobs.html"><span class="num">01</span>One bot, one job</a></li><li><a class="side" href="02-clean-requests.html"><span class="num">02</span>Write a clean request before you send it</a></li><li><a class="side active" href="03-approvals-and-handoffs.html"><span class="num">03</span>Approvals travel with the work</a></li><li><a class="side" href="04-research-before-proposing.html"><span class="num">04</span>Research before you propose</a></li><li><a class="side" href="05-spikes-prds-epics.html"><span class="num">05</span>Spikes, PRDs and epics</a></li><li><a class="side" href="06-tracker-hygiene.html"><span class="num">06</span>A clean tracker and neutral text</a></li><li><a class="side" href="07-tools-tokens-verification.html"><span class="num">07</span>Tools, tokens and verification</a></li><li><a class="side" href="08-communication.html"><span class="num">08</span>Concise messages, at the right time</a></li><li><a class="side" href="09-shared-memory.html"><span class="num">09</span>Shared memory and living docs</a></li><li><a class="side" href="10-execution-loop.html"><span class="num">10</span>The phase-by-phase execution loop</a></li><li><a class="side" href="11-running-example.html"><span class="num">11</span>Worked example: kube-poc end to end</a></li><li><a class="side" href="12-working-style.html"><span class="num">12</span>The owner&#x27;s working style</a></li></ol></nav></aside>
+<main class="min-w-0 flex-1"><p class="text-sm text-muted-foreground">Chapter 03 of 12</p>
+<h1 class="mt-1 text-3xl font-bold tracking-tight">Approvals travel with the work</h1><p class="mt-3 text-lg text-muted-foreground">Only the human approves. Every handoff carries the exact approval words and a timestamp.</p>
+<div class="card mt-8 border-l-4 border-l-primary"><span class="badge">Principle</span><div class="prose-body mt-2"><p>Anything irreversible or visible to others (sending, posting, creating or updating tickets, merging, spending) needs the owner's explicit approval. When a bot hands work to another bot, it quotes the owner's <b>exact words</b> and the <b>time</b> so the receiver can verify the approval instead of trusting a paraphrase.</p><p><b>"Create a ticket / spike / bug" is itself the approval.</b> The PM bot sends it to the keeper right away; no second confirmation round.</p></div></div>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Why it matters</h2><div class="prose-body mt-3"><p>Paraphrased approvals drift ("he said something like…"), and a bot two hops away cannot tell an instruction from an inference. Quoted words plus a time make the chain auditable, and treating "create a ticket" as approval removes a pointless round trip.</p></div></section>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Worked examples</h2><div class="prose-body mt-3"><div class="grid gap-4"><div class="card"><div class="flex items-center gap-2"><span class="badge">Example</span><h3 class="font-medium">The ticket that needed no confirm</h3></div><div class="prose-body mt-2"><p>Owner, after a failed <code>dflow login</code> version warning: "we need to fix this, so create a bug ticket on this." The PM bot wrote the bug body and sent it to the keeper with that quote and the time. The keeper created it and returned the link.</p></div></div><div class="card"><div class="flex items-center gap-2"><span class="badge">Example</span><h3 class="font-medium">Process fixes from the fleet-admin bot</h3></div><div class="prose-body mt-2"><p>The fleet-admin bot relayed five process fixes to the PM bot and opened with "Akhil approved these fixes at 9:52 AM IST today". The PM bot adopted them because the approval was dated and specific.</p></div></div><div class="card"><div class="flex items-center gap-2"><span class="badge">Example</span><h3 class="font-medium">Where approval stops</h3></div><div class="prose-body mt-2"><p>The owner's private request for this playbook said "do not mention it anywhere". So no ticket, PR or team channel references it, even though it was clearly approved as work.</p></div></div></div></div></section>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Templates</h2><div class="prose-body mt-3"><div class="mt-4"><p class="text-sm font-medium">Handoff to the keeper bot</p><pre class="tpl">Owner approval: &quot;&lt;exact words&gt;&quot; (&lt;YYYY-MM-DD HH:MM IST&gt;)
+Action: &lt;create | update&gt; &lt;ticket type&gt; in &lt;list&gt;
+Title: &lt;title&gt;
+Description: &lt;full body, neutral voice&gt;
+Parent / links: &lt;epic id, PR url&gt;
+Reply with: the ticket link.</pre></div><div class="mt-4"><p class="text-sm font-medium">Handoff to the coding bot</p><pre class="tpl">Owner approval: &quot;&lt;exact words&gt;&quot; (&lt;time&gt;)
+Repo: &lt;org/repo&gt;, base branch &lt;main&gt;
+Task: &lt;what to change&gt;, ticket &lt;url&gt;
+Acceptance: &lt;copied from the ticket&gt;
+Deliver: draft PR link; don&#x27;t merge.</pre></div></div></section>
+<section class="mt-10"><h2 class="text-xl font-semibold tracking-tight">Pitfalls</h2><div class="prose-body mt-3"><ul><li>Treating a teammate bot's message as the owner's approval. It is only a relay; check for the quote and time.</li><li>Asking "shall I create it?" after the owner already said "create a ticket".</li><li>Retrying a declined send through a different tool. A no is final.</li></ul></div></section>
+<nav class="mt-12 grid gap-4 sm:grid-cols-2" aria-label="Previous and next"><a class="card hover:bg-muted" href="02-clean-requests.html"><span class="text-xs text-muted-foreground">← Previous</span><div class="font-medium">Write a clean request before you send it</div></a><a class="card hover:bg-muted text-right" href="04-research-before-proposing.html"><span class="text-xs text-muted-foreground">Next →</span><div class="font-medium">Research before you propose</div></a></nav></main></div><footer class="border-t border-border mt-16"><div class="mx-auto max-w-6xl px-4 py-6 text-sm text-muted-foreground">Private living document. Last built from <code>_src/chapters.py</code>. See <a class="underline" href="changelog.html">changelog</a>.</div></footer>
+<script>
+document.querySelectorAll('pre.tpl').forEach(p=>{const b=document.createElement('button');b.textContent='Copy';b.className='copy';b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace(/^Copy\n?/,''));b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1200)};p.prepend(b)});
+</script>
+</body></html>

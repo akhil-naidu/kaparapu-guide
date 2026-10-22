@@ -1,0 +1,19 @@
+/* shadcn/ui design tokens (neutral). Port: copy into app/globals.css */
+:root{--background:0 0% 100%;--foreground:240 10% 3.9%;--card:0 0% 100%;--card-foreground:240 10% 3.9%;--muted:240 4.8% 95.9%;--muted-foreground:240 3.8% 46.1%;--accent:240 4.8% 95.9%;--accent-foreground:240 5.9% 10%;--border:240 5.9% 90%;--primary:24 95% 53%;--primary-foreground:0 0% 100%;--destructive:0 84% 60%;--radius:0.5rem}
+.dark{--background:240 10% 3.9%;--foreground:0 0% 98%;--card:240 10% 5.5%;--card-foreground:0 0% 98%;--muted:240 3.7% 15.9%;--muted-foreground:240 5% 64.9%;--accent:240 3.7% 15.9%;--accent-foreground:0 0% 98%;--border:240 3.7% 15.9%;--primary:24 95% 53%;--primary-foreground:0 0% 100%}
+.card{border:1px solid hsl(var(--border));background:hsl(var(--card));border-radius:var(--radius);padding:1.25rem}
+.badge{display:inline-flex;align-items:center;border-radius:9999px;padding:.1rem .6rem;font-size:.75rem;font-weight:600;background:hsl(var(--primary));color:hsl(var(--primary-foreground))}
+.badge-muted{display:inline-flex;border-radius:9999px;padding:.05rem .5rem;font-size:.72rem;font-weight:600;background:hsl(var(--muted));color:hsl(var(--muted-foreground));border:1px solid hsl(var(--border))}
+.tab{padding:.35rem .7rem;border-radius:calc(var(--radius) - 2px);color:hsl(var(--muted-foreground))}
+.tab:hover{background:hsl(var(--muted));color:hsl(var(--foreground))}
+.side{display:flex;gap:.6rem;padding:.4rem .6rem;border-radius:calc(var(--radius) - 2px);font-size:.875rem;color:hsl(var(--muted-foreground))}
+.side:hover,.side.active{background:hsl(var(--muted));color:hsl(var(--foreground))}
+.side .num{font-variant-numeric:tabular-nums;opacity:.6}
+.btn-primary{background:hsl(var(--primary));color:hsl(var(--primary-foreground));padding:.6rem 1rem;border-radius:var(--radius);font-weight:500}
+.btn-outline{border:1px solid hsl(var(--border));padding:.6rem 1rem;border-radius:var(--radius);font-weight:500}
+.prose-body p{margin:.5rem 0;line-height:1.7}.prose-body ul{list-style:disc;padding-left:1.25rem}.prose-body ol{list-style:decimal;padding-left:1.25rem}.prose-body li{margin:.3rem 0;line-height:1.6}
+.prose-body code,code{font-size:.85em;background:hsl(var(--muted));padding:.1rem .3rem;border-radius:4px}
+.prose-body a{text-decoration:underline}
+pre.tpl,pre.diagram{position:relative;background:hsl(var(--muted));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1rem;font-size:.8rem;line-height:1.5;overflow-x:auto;white-space:pre-wrap}
+pre.diagram{white-space:pre;font-size:.72rem}
+.copy{position:absolute;top:.5rem;right:.5rem;font-size:.7rem;border:1px solid hsl(var(--border));background:hsl(var(--background));border-radius:6px;padding:.1rem .5rem}
