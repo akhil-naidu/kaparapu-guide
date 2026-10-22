@@ -2,6 +2,7 @@ name: content-check
 on:
   push:
   pull_request:
+  workflow_dispatch:
 jobs:
   scan:
     runs-on: ubuntu-latest
