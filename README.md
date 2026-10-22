@@ -16,4 +16,4 @@ Private living document. Never reference it in the tracker, tickets, PRs or team
 Port note: each chapter maps to a route; `card`/`badge`/sidebar map to shadcn Card, Badge and a Sidebar/Tabs nav.
 
 ## Repo
-https://github.com/akhil-naidu/ai-workflow-guide (private). Daily work on `dev` (default); `dev` merges into `main` quarterly.
+https://github.com/akhil-naidu/kaparapu-guide (private). Daily work on `dev` (default); `dev` merges into `main` quarterly.
