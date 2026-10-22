@@ -1,19 +1,21 @@
-# Working with AI: an organisation playbook (private)
+# Kaparapu Guide
 
 Private living document. Never reference it in the tracker, tickets, PRs or team channels.
 
 ## Layout
-- `index.html`, `01-…12-*.html`, `changelog.html`: generated pages (don't hand-edit).
-- `assets/theme.css`: shadcn/ui tokens (light + dark) and small component classes (card, badge, tab, side). Copy into `globals.css` when porting to Next.js + shadcn.
-- `_src/chapters.py`: all content (chapters + changelog). `_src/build.py`: layout and generator.
+
+- `app/`: Next.js App Router pages. The site is a static export.
+- `content/`: landing page, changelog, and the twelve chapters as MDX.
+- `components/`: shadcn/ui components and the site shell.
+- `deploy/default.conf.template`: nginx config. The image listens on `$PORT`.
 
 ## Update
-1. Edit `_src/chapters.py` (add a chapter dict, or edit one; `n` sets order and the file name `NN-slug.html`).
-2. Add a CHANGELOG entry at the top (version, date, what changed).
-3. `python3 _src/build.py`
-4. Mark interpretation with `INF`; never add secrets (env var names only), bot names in examples, time estimates, or upstream vendor names the product derives from.
 
-Port note: each chapter maps to a route; `card`/`badge`/sidebar map to shadcn Card, Badge and a Sidebar/Tabs nav.
+1. Edit the chapter MDX in `content/chapters/`, or the landing and changelog MDX.
+2. Keep interpretation marked with the Inferred badge.
+3. Do not add secrets (env var names only), names in examples, time estimates, or upstream vendor names the product derives from.
+4. `npm run build` writes the static export to `out/`.
 
 ## Repo
+
 https://github.com/akhil-naidu/kaparapu-guide (private). Daily work on `dev` (default); `dev` merges into `main` quarterly.
